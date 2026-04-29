@@ -38,12 +38,12 @@ public class MainActivity extends AppCompatActivity {
         //register new account button
         Button createAccountBtn = findViewById(R.id.createAccountButton);
 
-        //when clicked will send user to login page
+        //when login button clicked, will send user to login page
         loginBtn.setOnClickListener(v ->
                 startActivity(new Intent(this, LoginActivity.class))
         );
 
-        //when clicked will send user to create account page
+        //when create account button clicked, will send user to create account page
         createAccountBtn.setOnClickListener(v ->
                 startActivity(new Intent(this, CreateAccountActivity.class))
         );
