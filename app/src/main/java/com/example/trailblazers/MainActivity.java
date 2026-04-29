@@ -13,11 +13,19 @@ public class MainActivity extends AppCompatActivity {
 
     private static final int LOGGED_OUT = -1;
 
+    private int loggedInUserId = LOGGED_OUT;
+
+    private Trau repository
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        repository
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
