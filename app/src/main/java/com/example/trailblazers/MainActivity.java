@@ -1,28 +1,51 @@
 package com.example.trailblazers;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.Button;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
-    private static final String MAIN_ACTIVITY_USER_ID = "MAIN_ACTIVITY_USER_ID";
+    //CONSTANTS
+    //saved storage file
+    private static final String PREF_NAME = "TrailBlazersPrefs";
+    //key used to store user id in storage
+    private static final String USER_KEY = "loggedInUser";
 
-    private static final int LOGGED_OUT = -1;
-
-
+    //ON-CREATE
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+        //checks if user is already logged in
+        SharedPreferences prefs = getSharedPreferences(PREF_NAME, MODE_PRIVATE);
+        //get stored user id, -1 meaning no user is logged in
+        int userId = prefs.getInt(USER_KEY, -1);
+
+        if (userId != -1) {
+            //sends to landing page if user is logged in
+            startActivity(new Intent(this, LandingPageActivity.class));
+            //closes activity so user can't return
+            finish();
+            return;
+        }
+
+        //login button
+        Button loginBtn = findViewById(R.id.loginButton);
+        //register new account button
+        Button createAccountBtn = findViewById(R.id.createAccountButton);
+
+        //when clicked will send user to login page
+        loginBtn.setOnClickListener(v ->
+                startActivity(new Intent(this, LoginActivity.class))
+        );
+
+        //when clicked will send user to create account page
+        createAccountBtn.setOnClickListener(v ->
+                startActivity(new Intent(this, CreateAccountActivity.class))
+        );
     }
 }
