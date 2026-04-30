@@ -1,5 +1,4 @@
-package com.example.trailblazers.database;
-
+package com.example.trailblazers.database.entities;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 

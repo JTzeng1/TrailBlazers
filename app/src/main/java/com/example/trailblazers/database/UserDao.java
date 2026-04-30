@@ -1,5 +1,6 @@
 package com.example.trailblazers.database;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
@@ -7,7 +8,7 @@ import androidx.room.Query;
 import com.example.trailblazers.database.entities.User;
 
 @Dao
-public interface UserDAO {
+public interface UserDao {
 
     @Insert
     void insert(User user);
@@ -15,12 +16,12 @@ public interface UserDAO {
     @Query("DELETE FROM users")
     void deleteAll();
 
-    @Query("SELECT * FROM users WHERE userName=:username LIMIT 1")
+    @Query("SELECT * FROM users WHERE userName = :username LIMIT 1")
     LiveData<User> getUserByUserName(String username);
 
-
-    @Query("SELECT * FROM users WHERE userID=:userId LIMIT 1")
+    @Query("SELECT * FROM users WHERE userID = :userId LIMIT 1")
     LiveData<User> getUserByUserId(int userId);
 
-
+    @Query("SELECT * FROM users WHERE userName = :username AND password = :password LIMIT 1")
+    User login(String username, String password);
 }
