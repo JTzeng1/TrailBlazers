@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
+        //ui setup
         Button loginBtn = findViewById(R.id.loginButton);
         Button createAccountBtn = findViewById(R.id.createAccountButton);
 
