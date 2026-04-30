@@ -11,7 +11,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.trailblazers.database.TrailDatabase;
-import com.example.trailblazers.database.User;
+import com.example.trailblazers.database.entities.User;
 import com.example.trailblazers.database.UserDao;
 
 public class LandingPageActivity extends AppCompatActivity {
@@ -46,7 +46,7 @@ public class LandingPageActivity extends AppCompatActivity {
 
         //get user from database
         UserDao userDao = TrailDatabase.getDatabase(this).userDao();
-        User currentUser = userDao.getUserById(userId);
+        User currentUser = userDao.getUserByUserId(userId);
 
         //if saved id doesn't match database, clear login and send user back
         if (currentUser == null) {
@@ -59,7 +59,7 @@ public class LandingPageActivity extends AppCompatActivity {
         }
 
         //display username: "Welcome, USER"
-        usernameTextView.setText("Welcome, " + currentUser.getUserName());
+        usernameTextView.setText("Welcome, " + currentUser.getUserByUserName());
 
         //checks if user is admin
         if (currentUser.isAdmin()) {
