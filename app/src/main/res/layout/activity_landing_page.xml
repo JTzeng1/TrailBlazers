@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="24dp">
+
+    <!--TITLE TEXT: Welcome, User-->
+    <TextView
+        android:id="@+id/usernameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome, User"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp" />
+
+    <!--USER STATUS: User type-->
+    <TextView
+        android:id="@+id/adminStatusTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="User Type"
+        android:textSize="26sp"
+        android:layout_marginBottom="24dp" />
+
+    <!--ADMIN BUTTON: Admin-->
+    <Button
+        android:id="@+id/adminButton"
+        android:layout_width="220dp"
+        android:layout_height="70dp"
+        android:text="Admin"
+        android:visibility="invisible"
+        android:layout_marginBottom="24dp"
+        android:textSize="24sp" />
+
+    <!--LOGOUT BUTTON: Logout-->
+    <Button
+        android:id="@+id/logoutButton"
+        android:layout_width="220dp"
+        android:layout_height="70dp"
+        android:text="Logout"
+        android:textSize="24sp" />
+
+</LinearLayout>
