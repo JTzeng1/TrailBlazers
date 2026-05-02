@@ -7,9 +7,13 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.trailblazers.database.TrailDatabase;
+import com.example.trailblazers.database.entities.User;
+
 public class MainActivity extends AppCompatActivity {
     //saved storage file
-    private static final String PREF_NAME = "TrailBlazersPrefs";
+    // to stay consistant PREF_NAME will be used instead of TrailBlazersPrefs
+    private static final String PREF_NAME = "PREF_NAME";
     //key used to store logged-in user id in SharedPreferences
     private static final String USER_KEY = "loggedInUser";
 
@@ -17,6 +21,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //fixed login
+        TrailDatabase db = TrailDatabase.getDatabase(this);
+
+        if (db.userDao().getUserByUserId(1) == null) {
+            db.userDao().insert(new User("testuser1", "testuser1", false));
+            db.userDao().insert(new User("admin2", "admin2", true));
+        }
 
         //checks if user is already logged in
         SharedPreferences prefs = getSharedPreferences(PREF_NAME, MODE_PRIVATE);
@@ -35,13 +47,9 @@ public class MainActivity extends AppCompatActivity {
         Button createAccountBtn = findViewById(R.id.createAccountButton);
 
         //when login button clicked, will send user to login page
-        loginBtn.setOnClickListener(v ->
-                startActivity(new Intent(this, LoginActivity.class))
-        );
+        loginBtn.setOnClickListener(v -> startActivity(new Intent(this, LoginActivity.class)));
 
         //when create account button clicked, will send user to create account page
-        createAccountBtn.setOnClickListener(v ->
-                startActivity(new Intent(this, CreateAccountActivity.class))
-        );
+        createAccountBtn.setOnClickListener(v -> startActivity(new Intent(this, CreateAccountActivity.class)));
     }
 }

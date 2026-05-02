@@ -3,6 +3,7 @@ package com.example.trailblazers;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteCursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,7 +17,7 @@ import com.example.trailblazers.database.UserDao;
 
 public class LandingPageActivity extends AppCompatActivity {
     //saved storage file
-    private static final String PREF_NAME = "TrailBlazersPrefs";
+    private static final String PREF_NAME = "loginPrefs";
     //key used to store logged-in user id in SharedPreferences
     private static final String USER_KEY = "loggedInUser";
 
@@ -59,7 +60,7 @@ public class LandingPageActivity extends AppCompatActivity {
         }
 
         //display username: "Welcome, USER"
-        usernameTextView.setText("Welcome, " + currentUser.getUserByUserName());
+        usernameTextView.setText("Welcome, " + currentUser.getUserName());
 
         //checks if user is admin
         if (currentUser.isAdmin()) {

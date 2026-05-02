@@ -2,3 +2,9 @@
 plugins {
     alias(libs.plugins.android.application) apply false
 }
+
+// Workaround for OneDrive/Windows file locking issues:
+// Move the build directory outside of the OneDrive-synced project folder.
+allprojects {
+    buildDir = "C:/tmp/AndroidBuilds/${rootProject.name}/${project.name}"
+}

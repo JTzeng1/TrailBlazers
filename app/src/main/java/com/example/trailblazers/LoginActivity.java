@@ -1,5 +1,7 @@
 package com.example.trailblazers;
 
+import static android.view.Gravity.apply;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -46,12 +48,10 @@ public class LoginActivity extends AppCompatActivity {
 
         if (user != null) {
             SharedPreferences prefs = getSharedPreferences("loginPrefs", MODE_PRIVATE);
-            prefs.edit()
-                    .putBoolean("loggedIn", true)
-                    .putString("username", user.getUserName())
-                    .putBoolean("isAdmin", user.isAdmin())
-                    .putInt("userId", user.getUserID())
-                    .apply();
+            SharedPreferences.Editor editor = prefs.edit();
+
+            editor.putInt("loggedInUser", user.getUserID());
+            editor.apply();
 
             startActivity(new Intent(this, LandingPageActivity.class));
             finish();

@@ -7,6 +7,7 @@ import androidx.room.Query;
 
 import com.example.trailblazers.database.entities.User;
 
+
 @Dao
 public interface UserDao {
 
@@ -18,9 +19,9 @@ public interface UserDao {
 
     @Query("SELECT * FROM users WHERE userName = :username LIMIT 1")
     LiveData<User> getUserByUserName(String username);
-
+    // remove liveData and just leave User below
     @Query("SELECT * FROM users WHERE userID = :userId LIMIT 1")
-    LiveData<User> getUserByUserId(int userId);
+    User getUserByUserId(int userId);
 
     @Query("SELECT * FROM users WHERE userName = :username AND password = :password LIMIT 1")
     User login(String username, String password);
