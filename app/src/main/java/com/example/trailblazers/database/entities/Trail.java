@@ -5,15 +5,15 @@ import androidx.room.PrimaryKey;
 
 @Entity(tableName = "trails")
 public class Trail {
+
     @PrimaryKey(autoGenerate = true)
     private int trailID;
 
     private int userId;
-
     private String title;
     private double distance;
     private long time;
-    private String trailJournal;
+    private String journal;
     private String polyline;
 
 
@@ -57,12 +57,12 @@ public class Trail {
         this.time = time;
     }
 
-    public String getTrailJournal() {
-        return trailJournal;
+    public String getJournal() {
+        return journal;
     }
 
-    public void setTrailJournal(String trailJournal) {
-        this.trailJournal = trailJournal;
+    public void setJournal(String journal) {
+        this.journal = journal;
     }
 
     public String getPolyline() {

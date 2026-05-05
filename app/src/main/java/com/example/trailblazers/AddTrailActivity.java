@@ -1,5 +1,8 @@
 package com.example.trailblazers;
 
+import android.content.Intent;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,8 +29,8 @@ public class AddTrailActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         trailDao = TrailDatabase.getDatabase(this).trailDao();
-
         binding.saveButton.setOnClickListener(v -> saveTrail());
+
     }
 
     private void saveTrail() {
@@ -41,30 +44,52 @@ public class AddTrailActivity extends AppCompatActivity {
             return;
         }
 
+
         // get values directly from UI
         String title = binding.titleInput.getText().toString().trim();
         String distanceStr = binding.distanceInput.getText().toString().trim();
-        String timeStr = binding.timeInput.getText().toString().trim();
+        String hoursStr = binding.hoursInput.getText().toString().trim();
+        String minutesStr = binding.minutesInput.getText().toString().trim();
+        String secondsStr = binding.secondsInput.getText().toString().trim();
         String journal = binding.journalInput.getText().toString().trim();
 
-        // validation (VERY important)
-        if (title.isEmpty() || distanceStr.isEmpty() || timeStr.isEmpty()) {
-            Toast.makeText(this, "Fill required fields", Toast.LENGTH_SHORT).show();
+        if (title.isEmpty() || distanceStr.isEmpty() ||
+                hoursStr.isEmpty() || minutesStr.isEmpty() || secondsStr.isEmpty()) {
+
+            Toast.makeText(this, "Fill in all fields", Toast.LENGTH_SHORT).show();
             return;
         }
+        int hours;
+        int minutes;
+        int seconds;
+        double distance;
 
-        double distance = Double.parseDouble(distanceStr);
-        long time = Long.parseLong(timeStr);
+        try {
+            hours = Integer.parseInt(hoursStr);
+            minutes = Integer.parseInt(minutesStr);
+            seconds = Integer.parseInt(secondsStr);
+            distance = Double.parseDouble(distanceStr);
+
+        } catch (NumberFormatException e) {
+            Toast.makeText(this, "Enter a valid time", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        long timeInSeconds = (hours * 3600L) + (minutes * 60L) + seconds;
 
         // create object
         Trail trail = new Trail();
         trail.setUserId(userId);
         trail.setTitle(title);
         trail.setDistance(distance);
-        trail.setTime(time);
-        trail.setTrailJournal(journal);
+        trail.setTime(timeInSeconds);
+        trail.setJournal(journal);
 
-        trailDao.insert(trail);
+        long savedTrailId = trailDao.insert(trail);
+//        Intent intent = new Intent(this, TrailMapActivity.class);
+//        intent.putExtra("trailID", (int) savedTrailId);
+//        startActivity(intent);
+        startActivity(new Intent(this, TrailActivity.class));
+
 
         finish(); // go back to list
     }

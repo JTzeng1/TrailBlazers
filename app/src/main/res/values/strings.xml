@@ -8,4 +8,16 @@
     <string name="add_trail">Add Trail</string>
     <string name="add_trails">Add Trail</string>
     <string name="view_trails">View Trails</string>
+    <string name="add_trailz">Add Trail</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="create_account">Create Account</string>
+    <string name="time_hr_min_sec">Time hr/min/sec</string>
+    <string name="hr_min_sec">Hr:Min:Sec</string>
+    <string name="min">Min</string>
+    <string name="hr">HR</string>
+    <string name="sec">Sec</string>
+    <string name="view_map">View Map</string>
+    <string name="stop">Stop</string>
+    <string name="start">Start</string>
 </resources>

@@ -12,12 +12,12 @@ import java.util.List;
 
 public interface TrailDAO {
     @Insert
-    void insert(Trail trail);
+    long insert(Trail trail);
 
     @Query("SELECT * FROM trails WHERE userId = :userId")
     List<Trail> getTrailsByUserId(int userId);
 
-    @Query("DELETE FROM trails")
-    void deleteAll();
+    @Query("SELECT * FROM trails WHERE trailID = :id LIMIT 1")
+    Trail getTrailById(int id);
 
 }

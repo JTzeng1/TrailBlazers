@@ -23,12 +23,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //fixed login
-        TrailDatabase db = TrailDatabase.getDatabase(this);
+        new Thread(() -> {
+            TrailDatabase db = TrailDatabase.getDatabase(this);
 
-        if (db.userDao().getUserByUserId(1) == null) {
-            db.userDao().insert(new User("testuser1", "testuser1", false));
-            db.userDao().insert(new User("admin2", "admin2", true));
-        }
+            if (db.userDao().getUserByUserId(1) == null) {
+                db.userDao().insert(new User("testuser1", "testuser1", false));
+                db.userDao().insert(new User("admin2", "admin2", true));
+            }
+
+        }).start();
 
         //checks if user is already logged in
         SharedPreferences prefs = getSharedPreferences(PREF_NAME, MODE_PRIVATE);

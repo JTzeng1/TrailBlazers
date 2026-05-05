@@ -18,7 +18,7 @@ public interface UserDao {
     void deleteAll();
 
     @Query("SELECT * FROM users WHERE userName = :username LIMIT 1")
-    LiveData<User> getUserByUserName(String username);
+    User getUserByUserName(String username);
     // remove liveData and just leave User below
     @Query("SELECT * FROM users WHERE userID = :userId LIMIT 1")
     User getUserByUserId(int userId);

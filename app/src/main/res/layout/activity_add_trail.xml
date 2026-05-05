@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -8,34 +7,54 @@
 
     <EditText
         android:id="@+id/titleInput"
-        android:hint="@string/title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:hint="@string/title" />
 
     <EditText
         android:id="@+id/distanceInput"
-        android:hint="@string/distance"
-        android:inputType="numberDecimal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:hint="@string/distance"
+        android:inputType="numberDecimal" />
 
     <EditText
-        android:id="@+id/timeInput"
-        android:hint="@string/time_seconds"
-        android:inputType="number"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:id="@+id/hoursInput"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/hr"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/minutesInput"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/min"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/secondsInput"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/sec"
+        android:inputType="number" />
 
     <EditText
         android:id="@+id/journalInput"
-        android:hint="@string/journal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:hint="@string/journal" />
 
     <Button
         android:id="@+id/saveButton"
-        android:text="@string/save"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:text="@string/save" />
+
+<!--    <Button-->
+<!--        android:id="@+id/viewMapButton"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/view_map" />-->
 
 </LinearLayout>

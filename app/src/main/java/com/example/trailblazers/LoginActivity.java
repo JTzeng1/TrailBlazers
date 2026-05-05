@@ -44,20 +44,23 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-        User user = database.userDao().login(username, password);
+        new Thread(() -> {
+            User user = database.userDao().login(username, password);
+            runOnUiThread(() -> {
+                if (user != null) {
+                    // Save prefs and navigate
+                    SharedPreferences prefs = getSharedPreferences("loginPrefs", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = prefs.edit();
+                    editor.putInt("loggedInUser", user.getUserID());
+                    editor.apply();
+                    startActivity(new Intent(this, LandingPageActivity.class));
+                    finish();
+                } else {
+                    toastMaker("Invalid username or password.");
+                }
+            });
+        }).start();
 
-        if (user != null) {
-            SharedPreferences prefs = getSharedPreferences("loginPrefs", MODE_PRIVATE);
-            SharedPreferences.Editor editor = prefs.edit();
-
-            editor.putInt("loggedInUser", user.getUserID());
-            editor.apply();
-
-            startActivity(new Intent(this, LandingPageActivity.class));
-            finish();
-        } else {
-            toastMaker("Invalid username or password.");
-        }
     }
 
     private void toastMaker(String message) {
