@@ -13,7 +13,7 @@ import com.example.trailblazers.database.entities.User;
 public class MainActivity extends AppCompatActivity {
     //saved storage file
     // to stay consistant PREF_NAME will be used instead of TrailBlazersPrefs
-    private static final String PREF_NAME = "PREF_NAME";
+    private static final String PREF_NAME = "loginPrefs";
     //key used to store logged-in user id in SharedPreferences
     private static final String USER_KEY = "loggedInUser";
 
@@ -23,12 +23,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //fixed login
-        TrailDatabase db = TrailDatabase.getDatabase(this);
+        new Thread(() -> {
+            TrailDatabase db = TrailDatabase.getDatabase(this);
 
-        if (db.userDao().getUserByUserId(1) == null) {
-            db.userDao().insert(new User("testuser1", "testuser1", false));
-            db.userDao().insert(new User("admin2", "admin2", true));
-        }
+            if (db.userDao().getUserByUserId(1) == null) {
+                db.userDao().insert(new User("testuser1", "testuser1", false));
+                db.userDao().insert(new User("admin2", "admin2", true));
+            }
+
+        }).start();
 
         //checks if user is already logged in
         SharedPreferences prefs = getSharedPreferences(PREF_NAME, MODE_PRIVATE);

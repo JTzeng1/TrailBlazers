@@ -35,6 +35,26 @@
         android:layout_marginBottom="24dp"
         android:textSize="24sp" />
 
+    <!--See all Logs: Logout-->
+
+    <Button
+        android:id="@+id/viewTrailsButton"
+        android:text="@string/view_trails"
+        android:layout_width="220dp"
+        android:layout_height="70dp"
+        android:textSize="24sp"
+        android:layout_marginBottom="16dp"/>
+
+    <!--add Logs-->
+
+    <Button
+        android:id="@+id/addTrailButton"
+        android:text="@string/add_trails"
+        android:layout_width="220dp"
+        android:layout_height="70dp"
+        android:textSize="24sp"
+        android:layout_marginBottom="16dp"/>
+
     <!--LOGOUT BUTTON: Logout-->
     <Button
         android:id="@+id/logoutButton"
@@ -42,5 +62,7 @@
         android:layout_height="70dp"
         android:text="Logout"
         android:textSize="24sp" />
+
+
 
 </LinearLayout>
