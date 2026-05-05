@@ -6,12 +6,15 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
+import com.example.trailblazers.database.entities.Trail;
 import com.example.trailblazers.database.entities.User;
 
-@Database(entities = {User.class}, version = 1, exportSchema = false)
+@Database(entities = {User.class, Trail.class}, version = 3, exportSchema = false)
 public abstract class TrailDatabase extends RoomDatabase {
 
     public abstract UserDao userDao();
+    public abstract TrailDAO trailDao();
+
 
     private static TrailDatabase INSTANCE;
 
@@ -21,8 +24,10 @@ public abstract class TrailDatabase extends RoomDatabase {
                     context.getApplicationContext(),
                     TrailDatabase.class,
                     "trailblazers_db"
-            ).allowMainThreadQueries().build();
+            ).fallbackToDestructiveMigration().allowMainThreadQueries().build();
         }
         return INSTANCE;
     }
+
+
 }

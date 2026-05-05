@@ -13,7 +13,7 @@ import com.example.trailblazers.database.entities.User;
 public class MainActivity extends AppCompatActivity {
     //saved storage file
     // to stay consistant PREF_NAME will be used instead of TrailBlazersPrefs
-    private static final String PREF_NAME = "PREF_NAME";
+    private static final String PREF_NAME = "loginPrefs";
     //key used to store logged-in user id in SharedPreferences
     private static final String USER_KEY = "loggedInUser";
 

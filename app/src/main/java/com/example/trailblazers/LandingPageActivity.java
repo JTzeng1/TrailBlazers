@@ -82,6 +82,17 @@ public class LandingPageActivity extends AppCompatActivity {
             finish();
         });
 
+        Button viewTrails = findViewById(R.id.viewTrailsButton);
+        Button addTrail = findViewById(R.id.addTrailButton);
+
+        viewTrails.setOnClickListener(v ->
+                startActivity(new Intent(this, TrailActivity.class))
+        );
+
+        addTrail.setOnClickListener(v ->
+                startActivity(new Intent(this, AddTrailActivity.class))
+        );
+
         //admin button
         adminButton.setOnClickListener(v -> {
             //TODO: Add functionality to admin button

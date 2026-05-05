@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">TrailBlazers</string>
+    <string name="title">Title</string>
+    <string name="distance">Distance</string>
+    <string name="time_seconds">Time (seconds)</string>
+    <string name="journal">Journal</string>
+    <string name="save">Save</string>
+    <string name="add_trail">Add Trail</string>
+    <string name="add_trails">Add Trail</string>
+    <string name="view_trails">View Trails</string>
 </resources>
