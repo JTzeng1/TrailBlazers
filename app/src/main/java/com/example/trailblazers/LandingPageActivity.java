@@ -95,7 +95,7 @@ public class LandingPageActivity extends AppCompatActivity {
 
         //admin button
         adminButton.setOnClickListener(v -> {
-            //TODO: Add functionality to admin button
+            startActivity(new Intent(this, AdminActivity.class));
         });
     }
 }

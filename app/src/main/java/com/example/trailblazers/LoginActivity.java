@@ -1,6 +1,6 @@
 package com.example.trailblazers;
 
-import static android.view.Gravity.apply;
+//import static android.view.Gravity.apply;
 
 import android.content.Context;
 import android.content.Intent;

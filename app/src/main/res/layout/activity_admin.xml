@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/adminScrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/adminContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:id="@+id/adminTitleTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Admin Area"
+            android:textSize="32sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/accountsTitleTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="All Accounts"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <ListView
+            android:id="@+id/usersListView"
+            android:layout_width="match_parent"
+            android:layout_height="250dp" />
+
+        <EditText
+            android:id="@+id/deleteUserEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="User ID to delete"
+            android:inputType="number" />
+
+        <Button
+            android:id="@+id/deleteUserButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Delete User" />
+
+        <TextView
+            android:id="@+id/trailsTitleTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="All Runs / Trails"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <ListView
+            android:id="@+id/trailsListView"
+            android:layout_width="match_parent"
+            android:layout_height="250dp" />
+
+        <EditText
+            android:id="@+id/deleteTrailEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Trail ID to delete"
+            android:inputType="number" />
+
+        <Button
+            android:id="@+id/deleteTrailButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Delete Run / Trail" />
+
+        <Button
+            android:id="@+id/adminBackButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Back to Landing Page" />
+
+    </LinearLayout>
+</ScrollView>

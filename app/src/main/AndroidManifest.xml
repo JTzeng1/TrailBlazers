@@ -22,6 +22,7 @@
             android:value="AIzaSyB9rDZCaC_XvOHUUC6bW1xhmyGcW7nqrxk"/>
 
 
+        <activity android:name=".AdminActivity" />
         <activity android:name=".TrailMapActivity" />
         <activity android:name=".LandingPageActivity" />
         <activity android:name=".CreateAccountActivity" />
