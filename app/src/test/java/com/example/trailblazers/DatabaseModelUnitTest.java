@@ -34,4 +34,36 @@ public class DatabaseModelUnitTest {
         assertTrue(user.isAdmin());
     }
 
+    // Alexander Castaneda Test 1:
+    // Verifies that Trail setters correctly store trail identity and ownership data.
+    @Test
+    public void teamMember3_trailSetters_updateTrailIdAndUserId() {
+        Trail trail = new Trail();
+
+        trail.setTrailID(5);
+        trail.setUserId(2);
+        trail.setTitle("Morning Run");
+
+        assertEquals(5, trail.getTrailID());
+        assertEquals(2, trail.getUserId());
+        assertEquals("Morning Run", trail.getTitle());
+    }
+
+    // Alexander Castaneda Test 2:
+    // Verifies that Trail setters correctly store run details including distance,
+    // time, journal, and polyline.
+    @Test
+    public void teamMember3_trailSetters_updateTrailDetails() {
+        Trail trail = new Trail();
+
+        trail.setDistance(3.5);
+        trail.setTime(1800);
+        trail.setJournal("Good run today.");
+        trail.setPolyline("abc123");
+
+        assertEquals(3.5, trail.getDistance(), 0.001);
+        assertEquals(1800, trail.getTime());
+        assertEquals("Good run today.", trail.getJournal());
+        assertEquals("abc123", trail.getPolyline());
+    }
 }
