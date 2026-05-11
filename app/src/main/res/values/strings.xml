@@ -28,4 +28,5 @@
     <string name="welcome_user">Welcome, User</string>
     <string name="user_type">User Type</string>
     <string name="admin">Admin</string>
+    <string name="_00_00_00">00:00:00</string>
 </resources>

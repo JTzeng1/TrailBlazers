@@ -35,6 +35,8 @@ public class TrailMapActivity extends AppCompatActivity implements OnMapReadyCal
     private LocationCallback locationCallback;
     private static final int LOCATION_PERMISSION_REQUEST = 1001;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

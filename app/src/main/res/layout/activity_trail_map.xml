@@ -53,6 +53,15 @@
             android:text="@string/stop"
             android:visibility="gone"/>
 
+        <TextView
+            android:id="@+id/timerText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_00_00_00"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"/>
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
