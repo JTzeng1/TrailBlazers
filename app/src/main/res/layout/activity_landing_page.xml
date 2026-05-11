@@ -11,7 +11,7 @@
         android:id="@+id/usernameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome, User"
+        android:text="@string/welcome_user"
         android:textSize="32sp"
         android:textStyle="bold"
         android:layout_marginBottom="16dp" />
@@ -21,7 +21,7 @@
         android:id="@+id/adminStatusTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="User Type"
+        android:text="@string/user_type"
         android:textSize="26sp"
         android:layout_marginBottom="24dp" />
 
@@ -30,7 +30,7 @@
         android:id="@+id/adminButton"
         android:layout_width="220dp"
         android:layout_height="70dp"
-        android:text="Admin"
+        android:text="@string/admin"
         android:visibility="invisible"
         android:layout_marginBottom="24dp"
         android:textSize="24sp" />
@@ -55,12 +55,22 @@
         android:textSize="24sp"
         android:layout_marginBottom="16dp"/>
 
+    <!--Start Run-->
+
+    <Button
+        android:id="@+id/startRunButton"
+        android:layout_width="220dp"
+        android:layout_height="70dp"
+        android:text="@string/let_s_get_started"
+        android:textSize="24sp"
+        android:layout_marginBottom="16dp"/>
+
     <!--LOGOUT BUTTON: Logout-->
     <Button
         android:id="@+id/logoutButton"
         android:layout_width="220dp"
         android:layout_height="70dp"
-        android:text="Logout"
+        android:text="@string/logout"
         android:textSize="24sp" />
 
 

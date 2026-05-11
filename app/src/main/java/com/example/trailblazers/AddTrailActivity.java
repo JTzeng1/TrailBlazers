@@ -1,19 +1,15 @@
 package com.example.trailblazers;
 
 import android.content.Intent;
-import android.widget.Button;
-import android.widget.EditText;
+import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.trailblazers.database.entities.Trail;
-
-import android.content.SharedPreferences;
-import android.os.Bundle;
-
 import com.example.trailblazers.database.TrailDAO;
 import com.example.trailblazers.database.TrailDatabase;
+import com.example.trailblazers.database.entities.Trail;
 import com.example.trailblazers.databinding.ActivityAddTrailBinding;
 
 public class AddTrailActivity extends AppCompatActivity {
@@ -24,17 +20,14 @@ public class AddTrailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // inflate binding (replaces setContentView + findViewById)
         binding = ActivityAddTrailBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         trailDao = TrailDatabase.getDatabase(this).trailDao();
         binding.saveButton.setOnClickListener(v -> saveTrail());
-
     }
 
     private void saveTrail() {
-
         SharedPreferences prefs = getSharedPreferences("loginPrefs", MODE_PRIVATE);
         int userId = prefs.getInt("loggedInUser", -1);
 
@@ -44,8 +37,6 @@ public class AddTrailActivity extends AppCompatActivity {
             return;
         }
 
-
-        // get values directly from UI
         String title = binding.titleInput.getText().toString().trim();
         String distanceStr = binding.distanceInput.getText().toString().trim();
         String hoursStr = binding.hoursInput.getText().toString().trim();
@@ -55,10 +46,10 @@ public class AddTrailActivity extends AppCompatActivity {
 
         if (title.isEmpty() || distanceStr.isEmpty() ||
                 hoursStr.isEmpty() || minutesStr.isEmpty() || secondsStr.isEmpty()) {
-
             Toast.makeText(this, "Fill in all fields", Toast.LENGTH_SHORT).show();
             return;
         }
+
         int hours;
         int minutes;
         int seconds;
@@ -69,14 +60,12 @@ public class AddTrailActivity extends AppCompatActivity {
             minutes = Integer.parseInt(minutesStr);
             seconds = Integer.parseInt(secondsStr);
             distance = Double.parseDouble(distanceStr);
-
         } catch (NumberFormatException e) {
             Toast.makeText(this, "Enter a valid time", Toast.LENGTH_SHORT).show();
             return;
         }
         long timeInSeconds = (hours * 3600L) + (minutes * 60L) + seconds;
 
-        // create object
         Trail trail = new Trail();
         trail.setUserId(userId);
         trail.setTitle(title);
@@ -84,13 +73,8 @@ public class AddTrailActivity extends AppCompatActivity {
         trail.setTime(timeInSeconds);
         trail.setJournal(journal);
 
-        long savedTrailId = trailDao.insert(trail);
-//        Intent intent = new Intent(this, TrailMapActivity.class);
-//        intent.putExtra("trailID", (int) savedTrailId);
-//        startActivity(intent);
+        trailDao.insert(trail);
         startActivity(new Intent(this, TrailActivity.class));
-
-
-        finish(); // go back to list
+        finish();
     }
 }

@@ -36,14 +36,15 @@ public class CreateAccountActivity extends AppCompatActivity {
                 return;
             }
 
-            User newUser = new User(username, password, false);
-
-            userDao.insert(newUser);
-
-            Toast.makeText(this, "Account created!", Toast.LENGTH_SHORT).show();
-
-            startActivity(new Intent(this, MainActivity.class));
-            finish();
+            new Thread(() -> {
+                User newUser = new User(username, password, false);
+                userDao.insert(newUser);
+                runOnUiThread(() -> {
+                    Toast.makeText(this, "Account created!", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(this, MainActivity.class));
+                    finish();
+                });
+            }).start();
         });
     }
 }

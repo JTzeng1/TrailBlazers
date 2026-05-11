@@ -19,7 +19,6 @@ public class User {
         this.isAdmin = isAdmin;
     }
 
-    // --- Getters and Setters ---
 
     public int getUserID() {
         return userID;

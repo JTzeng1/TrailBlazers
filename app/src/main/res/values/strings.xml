@@ -18,6 +18,14 @@
     <string name="hr">HR</string>
     <string name="sec">Sec</string>
     <string name="view_map">View Map</string>
-    <string name="stop">Stop</string>
+
     <string name="start">Start</string>
+    <string name="play">PLAY</string>
+    <string name="pause">PAUSE</string>
+    <string name="stop">STOP</string>
+    <string name="logout">Logout</string>
+    <string name="let_s_get_started">Let\'s Get Started</string>
+    <string name="welcome_user">Welcome, User</string>
+    <string name="user_type">User Type</string>
+    <string name="admin">Admin</string>
 </resources>
